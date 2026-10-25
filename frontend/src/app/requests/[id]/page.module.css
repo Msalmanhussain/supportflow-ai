@@ -1,0 +1,163 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.main {
+  width: 100%;
+  max-width: 52rem;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(22, 22, 22, 0.06);
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.notice {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #8a5a12;
+  background: #f7f0e4;
+  color: #3f2c0a;
+  font-weight: 700;
+}
+
+.simulated {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2f5d50;
+}
+
+.section {
+  margin: 0 0 1.5rem;
+}
+
+.section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.pre {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  white-space: pre-wrap;
+  background: #f4f6f4;
+  border: 1px solid #d5d8d4;
+  border-radius: 4px;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 10rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #b7c0bc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.button {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #2f5d50;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buttonSecondary {
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #b7c0bc;
+  font: inherit;
+  cursor: pointer;
+}
+
+.buttonDanger {
+  background: #8a2f2f;
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.meta {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.meta div {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.meta dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+.meta dd {
+  margin: 0;
+}
+
+.error {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #8a2f2f;
+  background: #f8ecec;
+  color: #4a1717;
+}
+
+.sourceItem {
+  margin: 0 0 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border-left: 3px solid #2f5d50;
+  background: #f7faf8;
+}
+
+.events {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.note {
+  margin-top: 0.5rem;
+}
+
+.note input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #b7c0bc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.muted {
+  color: #555;
+}

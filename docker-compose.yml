@@ -1,0 +1,124 @@
+# SupportFlow AI — API + PostgreSQL (Ollama runs on the Mac host, not in Compose)
+
+name: supportflow
+
+services:
+  db:
+    image: postgres:16.15-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init-databases.sh:/docker-entrypoint-initdb.d/10-init-databases.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    networks:
+      - supportflow
+    # Intentionally no host port publish — DB is internal to Compose.
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: supportflow-api:0.3.2
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      APP_NAME: ${APP_NAME:-SupportFlow AI}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      # Ollama on the Mac host (not published publicly). AI is optional for /ready.
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:1.7b}
+      OLLAMA_CONNECT_TIMEOUT_SECONDS: ${OLLAMA_CONNECT_TIMEOUT_SECONDS:-5}
+      OLLAMA_INFERENCE_TIMEOUT_SECONDS: ${OLLAMA_INFERENCE_TIMEOUT_SECONDS:-60}
+      OLLAMA_NUM_CTX: ${OLLAMA_NUM_CTX:-2048}
+      OLLAMA_NUM_PREDICT: ${OLLAMA_NUM_PREDICT:-128}
+      OLLAMA_MAX_CONCURRENCY: ${OLLAMA_MAX_CONCURRENCY:-1}
+      OLLAMA_TEMPERATURE: ${OLLAMA_TEMPERATURE:-0}
+      # INFERENCE_FIXTURE is intentionally omitted: normal Compose never enables
+      # fixtures. Acceptance stack and the `test` profile set it explicitly.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supportflow
+    # No Docker socket mount. No .env baked into the image. Ollama not in Compose.
+
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: supportflow-api:0.3.2
+    profiles: ["tools"]
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    command: ["alembic", "upgrade", "head"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supportflow
+
+  seed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: supportflow-api:0.3.2
+    profiles: ["tools"]
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    command: ["python", "-m", "app.seed"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supportflow
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: supportflow-api:0.3.2
+    profiles: ["test"]
+    environment:
+      APP_ENV: test
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/supportflow_test
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: supportflow_test
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      INFERENCE_FIXTURE: "true"
+      OLLAMA_BASE_URL: http://127.0.0.1:9
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:1.7b}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: ["pytest", "-q"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supportflow
+
+volumes:
+  postgres_data:
+
+networks:
+  supportflow:
+    driver: bridge

@@ -1,0 +1,56 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f6f2;
+  --ink: #161616;
+  --muted: #555;
+  --surface: #ffffff;
+  --border: #d5d8d4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    "IBM Plex Sans",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  background:
+    radial-gradient(circle at top left, #e7eee9 0%, transparent 45%),
+    linear-gradient(180deg, #f7f6f2 0%, #ebe8e1 100%);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #2f5d50;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 0.98rem;
+  }
+}

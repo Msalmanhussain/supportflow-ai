@@ -1,0 +1,136 @@
+.panel {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.sectionTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.notice {
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #2f5d50;
+  background: #eef5f2;
+  color: #1f2a26;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #b7c0bc;
+  border-radius: 4px;
+  font: inherit;
+  background: #fff;
+  color: #111;
+}
+
+.field input:focus {
+  outline: 2px solid #2f5d50;
+  outline-offset: 1px;
+  border-color: #2f5d50;
+}
+
+.button {
+  justify-self: start;
+  margin-top: 0.25rem;
+  padding: 0.7rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  background: #2f5d50;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: #254a40;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.status {
+  margin-top: 1.5rem;
+  min-height: 3rem;
+}
+
+.muted {
+  margin: 0;
+  color: #555;
+}
+
+.error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #8a2f2f;
+  background: #f8ecec;
+  color: #4a1717;
+}
+
+.result {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.simulated {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2f5d50;
+}
+
+.details {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.details > div {
+  display: grid;
+  gap: 0.15rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #dfe6e2;
+}
+
+.details dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+.details dd {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #111;
+}

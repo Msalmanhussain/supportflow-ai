@@ -1,0 +1,103 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Local databases and data dumps
+*.db
+*.sqlite
+*.sqlite3
+postgres-data/
+pgdata/
+data/local/
+*.dump
+*.sql.gz
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Model weights and local LLM artifacts (repo-root only; do not ignore app/models/)
+/models/
+*.gguf
+*.bin
+*.safetensors
+*.onnx
+.ollama/
+ollama-models/
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cursor/
+*.code-workspace
+
+# Docker / tooling leftovers
+.docker/
+docker-compose.override.yml
+
+# n8n local data (if run with bind mounts later)
+n8n-data/
+.n8n/
+
+# Next.js (frontend/ also has its own .gitignore)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env*.local
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+frontend/playwright/.cache/
+
+# Acceptance-only secrets (never commit)
+.env.acceptance
+
+# Keep portfolio screenshots; ignore accidental local capture dumps
+docs/screenshots/.tmp/

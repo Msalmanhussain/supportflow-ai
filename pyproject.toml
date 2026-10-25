@@ -1,0 +1,13 @@
+[project]
+name = "supportflow-ai"
+version = "0.1.2"
+description = "Local AI customer-support automation (portfolio) — Phase 1.2 API"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

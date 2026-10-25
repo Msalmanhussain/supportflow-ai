@@ -1,0 +1,234 @@
+.panel {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.sectionTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.notice {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #2f5d50;
+  background: #eef5f2;
+  color: #1f2a26;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.approvalNotice {
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid #8a5a12;
+  background: #f7f0e4;
+  color: #3f2c0a;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #b7c0bc;
+  border-radius: 4px;
+  font: inherit;
+  background: #fff;
+  color: #111;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid #2f5d50;
+  outline-offset: 1px;
+  border-color: #2f5d50;
+}
+
+.button {
+  justify-self: start;
+  margin-top: 0.25rem;
+  padding: 0.7rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  background: #2f5d50;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: #254a40;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.status {
+  margin-top: 1.5rem;
+  min-height: 3rem;
+}
+
+.muted {
+  margin: 0;
+  color: #555;
+}
+
+.error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #8a2f2f;
+  background: #f8ecec;
+  color: #4a1717;
+}
+
+.result {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.simulated {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2f5d50;
+}
+
+.meta {
+  margin: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.meta > div {
+  display: grid;
+  gap: 0.15rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid #dfe6e2;
+}
+
+.meta dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+.meta dd {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #111;
+}
+
+.openReview {
+  margin: 0;
+}
+
+.openReview a {
+  color: #2f5d50;
+  font-weight: 600;
+}
+
+.draftLabel {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+  font-weight: 600;
+}
+
+.draftText {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  white-space: pre-wrap;
+  background: #f4f6f4;
+  border: 1px solid #d5d8d4;
+  border-radius: 4px;
+  color: #111;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.sources {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sourceList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.sourceItem {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border-left: 3px solid #2f5d50;
+  background: #f7faf8;
+}
+
+.sourceMeta {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2a26;
+}
+
+.sourceDemo {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.sourceTitle {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.sourceText {
+  margin: 0;
+  white-space: pre-wrap;
+  font: inherit;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #111;
+}
